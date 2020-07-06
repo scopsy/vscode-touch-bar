@@ -1,0 +1,95 @@
+{
+  "name": "vscode-ssen-touchbar",
+  "version": "0.1.2",
+  "description": "SSen's Touchbar Setting",
+  "main": "main.js",
+  "scripts": {
+    "test": "npm test",
+    "publish": "vsce package && open . && open https://marketplace.visualstudio.com/manage/publishers/iamssen",
+    "pack": "vsce package"
+  },
+  "author": "Seoyeon Lee <i@ssen.name>",
+  "publisher": "iamssen",
+  "license": "MIT",
+  "repository": "github:iamssen/vscode-touchbar",
+  "bugs": "https://github.com/iamssen/vscode-touchbar/issues",
+  "homepage": "https://github.com/iamssen/vscode-touchbar",
+  "engines": {
+    "vscode": "^1.17.0"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "editor.action.revealDefinition",
+        "title": "Go To Definition"
+      },
+      {
+        "command": "editor.action.goToReferences",
+        "title": "Go To References"
+      },
+      {
+        "command": "workbench.action.showCommands",
+        "title": "CMD"
+      },
+      {
+        "command": "typescript.restartTsServer",
+        "title": "Restart TSServer"
+      },
+      {
+        "command": "ssen.touchbar.run",
+        "title": "Run"
+      },
+      {
+        "command": "ssen.touchbar.debug",
+        "title": "Debug"
+      },
+      {
+        "command": "workbench.action.terminal.openNativeConsole",
+        "title": "Terminal"
+      }
+    ],
+    "menus": {
+      "touchBar": [
+        {
+          "command": "editor.action.goToReferences",
+          "group": "g2",
+          "when": "editorHasReferenceProvider"
+        },
+        {
+          "command": "editor.action.revealDefinition",
+          "group": "g1",
+          "when": "editorHasDefinitionProvider"
+        },
+        {
+          "command": "workbench.action.showCommands",
+          "group": "g3"
+        },
+        {
+          "command": "typescript.restartTsServer",
+          "group": "g4"
+        },
+        {
+          "command": "ssen.touchbar.run",
+          "group": "g5",
+          "when": "!inDebugMode"
+        },
+        {
+          "command": "ssen.touchbar.debug",
+          "group": "g6",
+          "when": "!inDebugMode"
+        },
+        {
+          "command": "workbench.action.terminal.openNativeConsole",
+          "group": "g7"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "SSen's Touchbar Config"
+    }
+  }
+}
